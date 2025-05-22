@@ -7,7 +7,8 @@ from validator import *
 
 product_list = read_from_file("product.dat")
 
-def load_data(peroduct_list):
+
+def load_data(product_list):
     product_list = read_from_file("product.dat")
     for row in table.get_children():
         table.delete(row)
@@ -20,14 +21,14 @@ def reset_form():
     id.set(len(product_list) + 1)
     name.set("")
     brand.set("")
-    buyprice.set("")
-    sellprice.set("")
+    buy_price.set(0)
+    sell_price.set(0)
 
     load_data(product_list)
 
 
 def save_btn_click():
-    product = (id.get(), name.get(), brand.get(), buyprice.get(),sellprice(),quantity())
+    product = (id.get(), name.get(), brand.get(), buy_price.get(), sell_price.get(), quantity.get())
     errors = product_validator(product)
     if errors:
         msg.showerror("Errors", "\n".join(errors))
@@ -44,8 +45,8 @@ def table_select(x):
         id.set(selected_product[0])
         name.set(selected_product[1])
         brand.set(selected_product[2])
-        buyprice.set(selected_product[3])
-        sellprice.set(selected_product[4])
+        buy_price.set(selected_product[3])
+        sell_price.set(selected_product[4])
         quantity.set(selected_product[5])
 
 
@@ -78,15 +79,15 @@ Entry(window, textvariable=brand).place(x=80, y=100)
 
 # Buy price
 Label(window, text="buyprice").place(x=20, y=140)
-buyprice = IntVar()
-Entry(window, textvariable=buyprice).place(x=80, y=140)
+buy_price = IntVar()
+Entry(window, textvariable=buy_price).place(x=80, y=140)
 
-#Sellprice
+# Sellprice
 Label(window, text="sellprice").place(x=20, y=140)
-sellprice = IntVar()
-Entry(window, textvariable=sellprice).place(x=80, y=140)
+sell_price = IntVar()
+Entry(window, textvariable=sell_price).place(x=80, y=140)
 
-#quantity
+# quantity
 Label(window, text="quantity").place(x=20, y=140)
 quantity = IntVar()
 Entry(window, textvariable=quantity).place(x=80, y=140)
