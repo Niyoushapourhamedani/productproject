@@ -4,6 +4,7 @@ import tkinter.messagebox as msg
 from tkinter import *
 from file_manager import *
 from validator import *
+from product import Product
 
 product_list = read_from_file("product.dat")
 
@@ -29,7 +30,7 @@ def reset_form():
 
 def save_btn_click():
     product = (id.get(), name.get(), brand.get(), buy_price.get(), sell_price.get(), quantity.get())
-    errors = product_validator(product)
+    errors = product_validator()
     if errors:
         msg.showerror("Errors", "\n".join(errors))
     else:
@@ -40,14 +41,14 @@ def save_btn_click():
 
 
 def table_select(x):
-    selected_product = table.item(table.focus())["values"]
+    selected_product = Product(*table.item(table.focus())["values"])
     if selected_product:
-        id.set(selected_product[0])
-        name.set(selected_product[1])
-        brand.set(selected_product[2])
-        buy_price.set(selected_product[3])
-        sell_price.set(selected_product[4])
-        quantity.set(selected_product[5])
+        id.set(selected_product.id)
+        name.set(selected_product.name)
+        brand.set(selected_product.brand)
+        buy_price.set(selected_product.buy_price)
+        sell_price.set(selected_product.sell_price)
+        quantity.set(selected_product.quantity)
 
 
 def edit_btn_click():
@@ -55,8 +56,9 @@ def edit_btn_click():
 
 
 def remove_btn_click():
-    pass
-
+    selected_product = (table.focus())["values"]
+    if selected_product:
+        table.delete(selected_product)
 
 window = Tk()
 window.title("product Info")
