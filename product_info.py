@@ -85,7 +85,7 @@ Entry(window, textvariable=buy_price).place(x=80, y=140)
 # Sell price
 Label(window, text="Sell Price").place(x=20, y=180)
 sell_price = IntVar()
-Entry(window, textvariable=sell_price).place(x=80, y=140)
+Entry(window, textvariable=sell_price).place(x=80, y=180)
 
 # quantity
 Label(window, text="Quantity").place(x=20, y=220)
@@ -104,7 +104,8 @@ table.column(1, width=60)
 table.column(2, width=100)
 table.column(3, width=100)
 table.column(4, width=100)
-
+table.column(5, width=100)
+table.column(6, width=100)
 table.bind("<<TreeviewSelect>>", table_select)
 
 table.place(x=230, y=20)
