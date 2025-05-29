@@ -60,7 +60,7 @@ def remove_btn_click():
 
 window = Tk()
 window.title("product Info")
-window.geometry("610x270")
+window.geometry("610x360")
 
 # Id
 Label(window, text="Id").place(x=20, y=20)
@@ -73,31 +73,32 @@ name = StringVar()
 Entry(window, textvariable=name).place(x=80, y=60)
 
 # Brand
-Label(window, text="brand").place(x=20, y=100)
+Label(window, text="Brand").place(x=20, y=100)
 brand = StringVar()
 Entry(window, textvariable=brand).place(x=80, y=100)
 
 # Buy price
-Label(window, text="buyprice").place(x=20, y=140)
+Label(window, text="Buy Price").place(x=20, y=140)
 buy_price = IntVar()
 Entry(window, textvariable=buy_price).place(x=80, y=140)
 
-# Sellprice
-Label(window, text="sellprice").place(x=20, y=140)
+# Sell price
+Label(window, text="Sell Price").place(x=20, y=180)
 sell_price = IntVar()
 Entry(window, textvariable=sell_price).place(x=80, y=140)
 
 # quantity
-Label(window, text="quantity").place(x=20, y=140)
+Label(window, text="Quantity").place(x=20, y=220)
 quantity = IntVar()
-Entry(window, textvariable=quantity).place(x=80, y=140)
+Entry(window, textvariable=quantity).place(x=80, y=220)
 
-table = ttk.Treeview(window, columns=[1, 2, 3, 4], show="headings")
+table = ttk.Treeview(window, columns=[1, 2, 3, 4, 5, 6], show="headings")
 table.heading(1, text="Id")
 table.heading(2, text="Name")
-table.heading(3, text="brand")
-table.heading(4, text="buyprice")
-table.heading(4, text="sellprice")
+table.heading(3, text="Brand")
+table.heading(4, text="Buy Price")
+table.heading(5, text="Sell Price")
+table.heading(6, text="Quantity")
 
 table.column(1, width=60)
 table.column(2, width=100)
@@ -108,10 +109,10 @@ table.bind("<<TreeviewSelect>>", table_select)
 
 table.place(x=230, y=20)
 
-Button(window, text="Save", width=6, command=save_btn_click).place(x=20, y=220)
-Button(window, text="Edit", width=6, command=edit_btn_click).place(x=90, y=220)
-Button(window, text="Remove", width=6, command=remove_btn_click).place(x=160, y=220)
-Button(window, text="Clear", width=6, command=reset_form).place(x=20, y=180, width=190)
+Button(window, text="Save", width=6, command=save_btn_click).place(x=20, y=310)
+Button(window, text="Edit", width=6, command=edit_btn_click).place(x=90, y=310)
+Button(window, text="Remove", width=6, command=remove_btn_click).place(x=160, y=310)
+Button(window, text="Clear", width=6, command=reset_form).place(x=20, y=260, width=190)
 
 reset_form()
 
